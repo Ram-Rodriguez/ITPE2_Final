@@ -121,3 +121,32 @@ btnLogout.onclick = ()=>{
     location.assign('index.html');
     localStorage.removeItem("loginkey");
 };
+
+let btnCheckOut = document.querySelector("#btnCheckout");
+btnCheckOut.setAttribute("onclick", "checkOut()");
+
+function checkOut(){
+    let sales = localStorage.getItem("sales");
+    sales = JSON.parse(sales);
+
+    let cart = localStorage.getItem("cart");
+    cart = JSON.parse(cart);
+
+    for(i = 0; i < cart.length; i++){
+        for(j = 0; j < sales.length; j++){
+            prodName = cart[i];
+            salesItem = sales[j];
+            if(prodName.product.name === salesItem.name){
+                salesItem.sold =  parseInt(salesItem.sold) + parseInt(prodName.quantity);
+                salesItem.sales = parseInt(salesItem.sold) * parseInt(salesItem.price);
+
+                localStorage.setItem("sales", JSON.stringify(sales));
+                break;
+            }
+        }
+    }
+
+    alert("Product/s has been checked out. Check Sales.")
+    localStorage.removeItem("cart");
+    return location.reload();
+}

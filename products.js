@@ -32,7 +32,22 @@ btnAddProduct.onclick = ()=>{
             price,
             image
         }
+        let toSales = {
+            name,
+            price,
+            sold: 0,
+            sales: 0
+        }
     
+        let sales = localStorage.getItem('sales');
+        if(!sales){
+            sales = [toSales];
+        }
+        else if(sales){
+            sales = JSON.parse(localStorage.getItem('sales'));
+            sales.push(toSales);
+        }
+        
         let products = localStorage.getItem('products')!=null;
         if(!products){
             products = [toAdd];
@@ -42,6 +57,7 @@ btnAddProduct.onclick = ()=>{
             products.push(toAdd);
         }
 
+        localStorage.setItem('sales', JSON.stringify(sales));
         localStorage.setItem('products', JSON.stringify(products));
         reloadComponents();
     }
@@ -97,6 +113,7 @@ btnAddProduct.onclick = ()=>{
 btnNuke.onclick = ()=>{
     localStorage.removeItem('products');
     localStorage.removeItem('presetexist');
+    localStorage.removeItem('sales');
     reloadComponents();
     let warnNoProduct = document.querySelector('#noproducts');
     warnNoProduct.style.display = 'flex';
@@ -151,7 +168,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     iterateStorage();
 
     let cartNumber = document.querySelector("#cartItems");
-    cartNumber.innerHTML = JSON.parse(localStorage.getItem("cart")).length;
+    let cart = localStorage.getItem("cart");
+    cart = JSON.parse(cart);
+    if(cart){
+        cartNumber.innerHTML = JSON.parse(localStorage.getItem("cart")).length;
+    }
 });
 
 function reloadComponents(){
@@ -309,16 +330,21 @@ btnDeleteProduct.onclick = ()=>{
     //editID = editID +1;
     let product = localStorage.getItem('products');
     product = JSON.parse(product);
+    let sales = localStorage.getItem('sales');
+    sales = JSON.parse(sales);
     let length = product.length;
     if(length==1){
         localStorage.removeItem('products');
+        localStorage.removeItem('sales');
         reloadComponents();
     }
     else{
         console.log(`before splice ${product}`);
         product.splice(editID, 1);
+        sales.splice(editID, 1);
         console.log(product);
         localStorage.setItem('products',JSON.stringify(product));
+        localStorage.setItem('sales',JSON.stringify(sales));
         reloadComponents();
     }
     
