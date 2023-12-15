@@ -115,3 +115,9 @@ function removeCartItem(id){
     localStorage.setItem("cart", JSON.stringify(cart));
     location.reload();
 }
+
+let btnLogout = document.querySelector('#btnLogout');
+btnLogout.onclick = ()=>{
+    location.assign('index.html');
+    localStorage.removeItem("loginkey");
+};

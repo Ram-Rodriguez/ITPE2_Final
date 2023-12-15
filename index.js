@@ -30,26 +30,35 @@ btnRegister.onclick = ()=>{
     let username = document.querySelector('#registerUsername').value;
     let password = document.querySelector('#registerPassword').value;
     let confirmPass = document.querySelector("#confirmPass").value;
-    let location = document.querySelector('#registerLocation').value;
-    let agreeTerms = document.querySelector('#registerAgree').checked;
-    register(email, username, password, confirmPass, location, agreeTerms);
+    let civilStatusSelector = document.querySelector("#civilStatus"),
+    civilStatusValue = civilStatusSelector.value,
+    address = document.querySelector("#addressTextarea").value,
+    birthdate = document.querySelector("#startDate").value,
+    sexRadios = document.querySelectorAll(".sex");
+    for (i = 0; i < sexRadios.length; i++) {
+        if (sexRadios[i].checked)
+            sex = sexRadios[i].value;
+    }
+    register(email, username, password, confirmPass, sex, civilStatusValue, address, birthdate);
 };
 
-function register(email, username, password, confirmPass, location, agreeTerms){
-    debugShowInputs(email, username, password, confirmPass, location, agreeTerms);
-
+function register(email, username, password, confirmPass, sex, civilStatusValue, address, birthdate){
     if(!email) return alert(`Email is required.`);
     else if(!username) return alert(`Username is required.`);
     else if(!password || !confirmPass) return alert(`Please confirm your password first.`);
     else if (password != confirmPass) return alert(`The passwords do not match.`);
     else if (passValidation(password)) return 0;
-    else if (!agreeTerms) return alert (`You must agree to the terms and conditions 🤬`);
+    else if (!civilStatusValue) return alert(`Civil Status is required`);
+    else if (!address) return alert(`Address is required.`);
     
     let userToCreate = {
         email,
         username,
         password,
-        location
+        sex,
+        civilStatusValue,
+        address,
+        birthdate
     };
     console.log('typeof userToCreate: ' + typeof userToCreate);
     
@@ -123,17 +132,6 @@ function passConditions(password){
     return 'valid';
 }
 
-function debugShowInputs(p1, p2, p3, p4, p5, p6){
-    console.log(
-        'email = ' + p1 + "\n" +
-        'username = ' + p2 + "\n" +
-        'password = ' + p3 + "\n" +
-        'confirmPass = ' + p4 + "\n" +
-        'location = ' + p5 + "\n" +
-        'agreeTerms = ' + p6
-    );
-}
-
 btnLogin.onclick = ()=>{
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
@@ -150,7 +148,7 @@ function login(email, password){
 
     users = JSON.parse(users);
     let userIndex = users.findIndex((u)=>{
-        return u.email == email || u.username == email && u.password == password;
+        return u.email == email && u.password == password;
     });
     console.log(userIndex);
     if (userIndex == -1) return alert(`Email or password is invalid.`);

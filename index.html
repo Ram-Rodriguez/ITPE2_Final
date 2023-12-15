@@ -39,98 +39,90 @@
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password" placeholder="Password" required>
                     <label for="password">Password</label>
-                </div>                  
-                <div class="form-check my-3">
-                    <input class="form-check-input" type="checkbox" value="" id="staySigned">
-                    <label class="form-check-label" for="staySigned">
-                        Stay signed in
-                    </label>
-                </div>
+                </div>  
                 <input class="btn btn-success w-100 mb-2" type="button" value="Log In" id="btnLogin">                 
             </form>
 
             <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#registerModal">
                 Register
             </button>
-            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Register an account.</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+            <!-- Modal -->
+      <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-floating mb-3">
+                  <input id="registerUsername" type="name" class="form-control" placeholder="John Doe">
+                  <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input id="registerEmail" type="email" class="form-control" placeholder="name@example.com">
+                  <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input id="registerPassword" type="password" class="form-control" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating">
+                  <input id="confirmPass" type="password" class="form-control" placeholder="Confirm Password">
+                  <label for="floatingPassword">Confirm Password</label>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <h6>Sex:</h6>
+                    <div class="form-check">
+                      <input class="form-check-input sex" type="radio" value="1" name="sex" checked>
+                        <label>
+                          Male
+                        </label>
+                      </input>
                     </div>
-                    <div class="modal-body">
-                        <form novalidate>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp validationEmail">      
-                                <div id="validationEmail" class="invalid-feedback">
-                                    Enter a valid email.
-                                </div>                      
-                                <div id="emailHelp" class="form-text">
-                                    We'll never share your email with anyone else.
-                                </div>  
-                            </div>
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="registerUsername" aria-describedby="usernameHelp">
-                                <div id="validationEmail" class="invalid-feedback">
-                                    Enter a username.
-                                </div>    
-                                <div id="usernameHelp" class="form-text">
-                                    We are highly discouraging you from using your real name.
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="registerPassword" aria-describedby="validationPassword">
-                                <div id="validationPassword" class="invalid-feedback">
-                                    Passwords must match.
-                                </div>                            
-                                <div id="passwordHelp" class="form-text">
-                                    Please use a password between 8-65535 characters, mixed with symbols, and numbers.
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirmPass" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPass" aria-describedby="validationConfirmPass">
-                                <div id="validationConfirmPass" class="invalid-feedback">
-                                    Passwords must match.
-                                </div>
-                                <div id="confirmHelp" class="form-text">Please confirm your password.</div>
-                              </div>
-                            <div class="mb-3">
-                                <label for="registerProvince" class="form-label">Location</label>
-                                <select class="form-select" aria-label="Select your province" id="registerLocation" aria-describedby="provinceHelp">
-                                    <option selected>Province</option>
-                                    <option value="ne">Nueva Ecija</option>
-                                    <option value="luz">Luzon</option>
-                                    <option value="vis">Visayas</option>
-                                    <option value="min">Mindanao</option>
-                                    <option value="int">Overseas</option>
-                                </select>
-                                <div id="validationProvince" class="invalid-feedback">
-                                    You must agree to our terms and services 🤬
-                                </div> 
-                                <div id="provinceHelp" class="form-text">
-                                    Please select the province you're currently living in.
-                                </div>
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="registerAgree">
-                                <label class="form-check-label" for="agree">
-                                    Agree to all the <span><a href="https://www.icrc.org/en/doc/war-and-law/treaties-customary-law/geneva-conventions/overview-geneva-conventions.htm">Terms and Conditions</a></span>
-                                </label>
-                                <div id="validationCheckbox" class="invalid-feedback">
-                                    You must agree to our terms and services 🤬
-                                </div>   
-                            </div>
-                            <button type="button" class="btn btn-success w-100" id="btnRegister">Register</button>
-                        </form>
+                    <div class="form-check">
+                      <input class="form-check-input sex" type="radio" value="0" name="sex">
+                        <label>
+                          Female
+                        </label>
+                      </input>
                     </div>
                   </div>
+                  <div class="col">
+                    <h6>Civil Status:</h6>
+                    <select class="form-select" aria-label="Default select example" id="civilStatus">
+                      <option selected="selected">Civil Status</option>
+                      <option value="1">Single</option>
+                      <option value="2">Married</option>
+                      <option value="3">Widow</option>
+                    </select>
+                  </div>
                 </div>
-            </div>  
+                <div class="mt-3">
+                  <label for="addressTextarea" class="form-label"><h6>Complete Address</h6></label>
+                  <textarea class="form-control" id="addressTextarea" rows="1"></textarea>
+                </div>
+                <div class="mt-3"> 
+                  <h6>Date of Birth: </h6> 
+                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy"> 
+                        <!--<input class="form-control" type="text" id="birthdate" readonly /> 
+                        <span class="input-group-addon"> 
+                            <i class="glyphicon glyphicon-calendar"></i> 
+                        </span>--> 
+                        <input id="startDate" class="form-control" type="date" />
+                    </div> 
+                </div> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                <button id="btnRegister" type="button" class="btn btn-primary" data-bs-dismiss="modal">Register</button>
+              </div>
+          </div>
+        </div>
+      </div>  
 
         </div>
         
