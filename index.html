@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--sanguineimpasse-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    .card{
+        width: 30vw;
+    }
+    @media screen and (max-width:1092px) {
+        .card{
+            width: 50vw;
+        }
+    }
+    @media screen and (max-width:766px) {
+        .card{
+            width: 75vw;
+        }
+    }
+    @media screen and (max-width:574px) {
+        .card{
+            width: 90vw;
+        }
+    }
+</style>
+<body>
+    <div class="container px-lg-5">
+        <h1 class="text-center my-5 fw-bold" style="font-size: 4rem;">Welcome back 🥰</h1>
+        <div class="card p-3 bg-light mx-auto my-5">
+            <form>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="someone@example.com" required>
+                    <label for="email">Email address or username</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                </div>                  
+                <div class="form-check my-3">
+                    <input class="form-check-input" type="checkbox" value="" id="staySigned">
+                    <label class="form-check-label" for="staySigned">
+                        Stay signed in
+                    </label>
+                </div>
+                <input class="btn btn-success w-100 mb-2" type="button" value="Log In" id="btnLogin">                 
+            </form>
+
+            <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#registerModal">
+                Register
+            </button>
+            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Register an account.</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form novalidate>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp validationEmail">      
+                                <div id="validationEmail" class="invalid-feedback">
+                                    Enter a valid email.
+                                </div>                      
+                                <div id="emailHelp" class="form-text">
+                                    We'll never share your email with anyone else.
+                                </div>  
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="registerUsername" aria-describedby="usernameHelp">
+                                <div id="validationEmail" class="invalid-feedback">
+                                    Enter a username.
+                                </div>    
+                                <div id="usernameHelp" class="form-text">
+                                    We are highly discouraging you from using your real name.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="registerPassword" aria-describedby="validationPassword">
+                                <div id="validationPassword" class="invalid-feedback">
+                                    Passwords must match.
+                                </div>                            
+                                <div id="passwordHelp" class="form-text">
+                                    Please use a password between 8-65535 characters, mixed with symbols, and numbers.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPass" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPass" aria-describedby="validationConfirmPass">
+                                <div id="validationConfirmPass" class="invalid-feedback">
+                                    Passwords must match.
+                                </div>
+                                <div id="confirmHelp" class="form-text">Please confirm your password.</div>
+                              </div>
+                            <div class="mb-3">
+                                <label for="registerProvince" class="form-label">Location</label>
+                                <select class="form-select" aria-label="Select your province" id="registerLocation" aria-describedby="provinceHelp">
+                                    <option selected>Province</option>
+                                    <option value="ne">Nueva Ecija</option>
+                                    <option value="luz">Luzon</option>
+                                    <option value="vis">Visayas</option>
+                                    <option value="min">Mindanao</option>
+                                    <option value="int">Overseas</option>
+                                </select>
+                                <div id="validationProvince" class="invalid-feedback">
+                                    You must agree to our terms and services 🤬
+                                </div> 
+                                <div id="provinceHelp" class="form-text">
+                                    Please select the province you're currently living in.
+                                </div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="registerAgree">
+                                <label class="form-check-label" for="agree">
+                                    Agree to all the <span><a href="https://www.icrc.org/en/doc/war-and-law/treaties-customary-law/geneva-conventions/overview-geneva-conventions.htm">Terms and Conditions</a></span>
+                                </label>
+                                <div id="validationCheckbox" class="invalid-feedback">
+                                    You must agree to our terms and services 🤬
+                                </div>   
+                            </div>
+                            <button type="button" class="btn btn-success w-100" id="btnRegister">Register</button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+            </div>  
+
+        </div>
+        
+    </div>
+<footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>
